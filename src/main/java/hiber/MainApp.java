@@ -6,6 +6,7 @@ import hiber.model.User;
 import hiber.service.UserService;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import javax.persistence.NoResultException;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -26,14 +27,25 @@ public class MainApp {
       Car car3 = new Car ("Volkswagen", 1992);
       Car car4 = new Car ("Ford", 30290);
 
-      userService.add(user1.setCar(car1));
-      userService.add(user2.setCar(car2));
-      userService.add(user3.setCar(car3));
-      userService.add(user4.setCar(car4));
+      userService.add(user1.setCar(car1).getUser());
+      userService.add(user2.setCar(car2).getUser());
+      userService.add(user3.setCar(car3).getUser());
+      userService.add(user4.setCar(car4).getUser());
 
       for (User user : userService.listUsers()) {
          System.out.println(user + " " + user.getCar());
          System.out.println("1. _____________________________________________");
+      }
+
+      String mod = "Broom";
+      int ser = 976459;
+
+      try {
+         User testUser = userService.getUserByCar(mod, ser);
+         System.out.println(testUser);
+      } catch (NoResultException e) {
+         e.printStackTrace();
+         System.out.println("У этой машины нет владельца");
       }
 
       context.close();
