@@ -66,8 +66,10 @@ public class User {
       return car;
    }
 
-   public User setCar(Car car) {
-      this.car = car;}
+   public Car setCar(Car car) {
+      this.car = car;
+      return car;
+   }
 
    @Override
    public String toString() {
