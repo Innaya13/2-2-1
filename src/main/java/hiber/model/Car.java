@@ -54,8 +54,9 @@ public class Car {
         return user;
     }
 
-    public void setUser(User user) {
+    public User setUser(User user) {
         this.user = user;
+        return user;
     }
 
     @Override
