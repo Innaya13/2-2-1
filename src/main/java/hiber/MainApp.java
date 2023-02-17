@@ -27,10 +27,10 @@ public class MainApp {
       Car car3 = new Car ("Volkswagen", 1992);
       Car car4 = new Car ("Ford", 30290);
 
-      userService.add(user1.setCar(car1).getUser());
-      userService.add(user2.setCar(car2).getUser());
-      userService.add(user3.setCar(car3).getUser());
-      userService.add(user4.setCar(car4).getUser());
+      userService.add(user1.setCar(car1));
+      userService.add(user2.setCar(car2));
+      userService.add(user3.setCar(car3));
+      userService.add(user4.setCar(car4));
 
       for (User user : userService.listUsers()) {
          System.out.println(user + " " + user.getCar());
