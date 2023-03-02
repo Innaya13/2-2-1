@@ -19,8 +19,11 @@ public class User {
    @Column(name = "email")
    private String email;
 
-   @OneToOne(cascade = CascadeType.ALL)
-   @JoinColumn(name = "Cars_id")
+  // @OneToOne(cascade = CascadeType.ALL)
+  // @JoinColumn(name = "user_id")
+  // private User user;
+
+   @OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
    private Car car;
 
    public User() {}
