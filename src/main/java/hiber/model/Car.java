@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    Long id;
 
     @Column(name = "model")
     private String model;
@@ -18,15 +18,16 @@ public class Car {
    // @OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
    // private Car car;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
+    @OneToOne(mappedBy = "car")
     private User user;
-
-    public Car() { }
 
     public Car(String model, int series) {
         this.model = model;
         this.series = series;
+    }
+
+    public Car() {
+
     }
 
     public Long getId() {
@@ -57,15 +58,17 @@ public class Car {
         return user;
     }
 
-    public User setUser(User user) {
+    public void setUser(User user) {
         this.user = user;
-        return user;
     }
 
     @Override
-    public String toString(){
-        return "Car {" + "id" + id +
+    public String toString() {
+        return "Car{" +
+                "id=" + id +
                 ", model='" + model + '\'' +
-                ", series=" + series + '}';
+                ", series=" + series +
+                ", user=" + user +
+                '}';
     }
 }
